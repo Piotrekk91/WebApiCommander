@@ -15,7 +15,6 @@ namespace WebApiCommander.Controllers
         public CommandsController(ICommanderRepo repository)
         {
             _repository = repository;
-
         }
 
         //private readonly MockCommanderRepo _repository = new MockCommanderRepo();
