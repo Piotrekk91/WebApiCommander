@@ -23,7 +23,7 @@ namespace WebApiCommander.Controllers
         public ActionResult <IEnumerable<Command>> GetAllCommands()
         {
 
-            var commandItems = _repository.GtAppCommands();
+            var commandItems = _repository.GetAllCommands();
 
             return Ok(commandItems);
 

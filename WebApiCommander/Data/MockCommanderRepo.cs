@@ -10,7 +10,7 @@ namespace WebApiCommander.Data
             return new Command {Id = 0, HowTo = "Boil an egg", Line = "Boil water", Platform = "Kettle & Pan" };
         }
 
-        public IEnumerable<Command> GtAppCommands()
+        public IEnumerable<Command> GetAllCommands()
         {
             var commands = new List<Command>
             {

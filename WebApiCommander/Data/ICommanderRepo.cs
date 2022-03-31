@@ -5,7 +5,7 @@ namespace WebApiCommander.Data
 {
     public interface ICommanderRepo
     {
-            IEnumerable<Command> GtAppCommands();
+            IEnumerable<Command> GetAllCommands();
             Command GetCommandByID(int id);
     }
 }
