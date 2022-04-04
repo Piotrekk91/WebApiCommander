@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using WebApiCommander.Dtos;
+using WebApiCommander.Models;
 
 namespace WebApiCommander.Profiles
 {
@@ -7,7 +8,9 @@ namespace WebApiCommander.Profiles
     {
         public CommandsProfile()
         {
-            CreateMap<CommandsProfile, CommandReadDto>();
+            //Source  -> Target
+            CreateMap<Command, CommandReadDto>();
+            CreateMap<CommandCreateDto, Command>();
         }
     }    
 }

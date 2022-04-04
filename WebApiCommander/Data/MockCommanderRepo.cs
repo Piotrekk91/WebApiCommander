@@ -20,5 +20,15 @@ namespace WebApiCommander.Data
             };
             return commands;
         }
+
+        public bool SaveChanges()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void CreateCommand(Command cmd)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
