@@ -29,7 +29,7 @@ namespace WebApiCommander.Data
 
         public void UpdateCommand(Command cmd)
         {
-            
+            //Nothing
         }
 
         IEnumerable<Command> ICommanderRepo.GetAllCommands()
