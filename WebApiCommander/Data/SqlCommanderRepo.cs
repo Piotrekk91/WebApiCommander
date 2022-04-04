@@ -27,10 +27,14 @@ namespace WebApiCommander.Data
            return (_context.SaveChanges() >=0);
         }
 
+        public void UpdateCommand(Command cmd)
+        {
+            
+        }
+
         IEnumerable<Command> ICommanderRepo.GetAllCommands()
         {
-            return _context.Commands.ToList();
-            
+            return _context.Commands.ToList();            
         }
 
         Command ICommanderRepo.GetCommandByID(int id)
