@@ -35,5 +35,10 @@ namespace WebApiCommander.Data
         {
             throw new System.NotImplementedException();
         }
+
+        public void DeleteCommand(Command cmd)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

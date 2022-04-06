@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using WebApiCommander.Data;
@@ -64,7 +65,7 @@ namespace WebApiCommander.Controllers
                      
         }
 
-        //PUT
+        //PUT api/commands/{id}
         [HttpPut("{id}")]
         public ActionResult UpdateCommand(int id, CommandUpdateDto commandUpdateDto)
         {
@@ -83,6 +84,46 @@ namespace WebApiCommander.Controllers
             return NoContent();
 
         }
+        //PATCH api/commands/{id}
+        [HttpPatch("{id}")]
+        public ActionResult PartialUpdateCommand(int id, JsonPatchDocument<CommandUpdateDto> patchDoc)
+        {
+            var commandModelFromRepo = _repository.GetCommandByID(id);
+            if (commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            var commandToPatch = _mapper.Map<CommandUpdateDto>(commandModelFromRepo);
+            patchDoc.ApplyTo(commandToPatch, ModelState);
+            if (!TryValidateModel(commandToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+            _mapper.Map(commandToPatch, commandModelFromRepo);
+            
+            _repository.UpdateCommand(commandModelFromRepo);
+            
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+        //DELETE api/commands/{id}
+        [HttpDelete("{id}")]
+        public ActionResult DeleteCommand(int id)
+        {
+            var commandModelFromRepo = _repository.GetCommandByID(id);
+            if (commandModelFromRepo == null)
+            {
+                return NotFound();
+            }
+            _repository.DeleteCommand(commandModelFromRepo);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+
+        }
+        
         
     }
 }
